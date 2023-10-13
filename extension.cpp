@@ -688,7 +688,7 @@ bool Outputinfo::SDK_OnLoad(char *error, size_t maxlength, bool late)
 	}
 
 	pGameConf->GetAddress("g_EntityListPool", reinterpret_cast<void**>(&g_pEntityList));
-	if(g_pEntityListPool == nullptr)
+	if(g_pEntityList == nullptr)
 	{
 		snprintf(error, maxlength, "Failed to obtain g_pEntityListPool from gamedata");
 		gameconfs->CloseGameConfigFile(pGameConf);
