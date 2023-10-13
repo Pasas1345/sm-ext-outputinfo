@@ -26,7 +26,7 @@ jobs:
           sudo apt update
           sudo apt install -yq --no-install-recommends g++-multilib
 
-      - name: Set up Python
+      - name: Set up Python and install AMBuild
         uses: actions/setup-python@v1
         with:
           python-version: '3.9'
@@ -51,9 +51,7 @@ jobs:
           path: ambuild
 
       - name: Install AMBuild
-        uses: BSFishy/pip-action@v1
-        with:
-          packages: ./ambuild
+        run: py -3.9 -m pip install ./ambuild
 
       - name: Checkout sm-ext-common
         uses: actions/checkout@v2
