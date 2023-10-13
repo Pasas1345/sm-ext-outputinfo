@@ -17,7 +17,7 @@ jobs:
             sdks: css,csgo
           - os: windows-2019
             target-archs: x86,x86_64
-            sdks: csgo
+            sdks: css,csgo
 
     steps:
       - name: Install Linux packages
@@ -27,7 +27,9 @@ jobs:
           sudo apt install -yq --no-install-recommends g++-multilib
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
       - name: Checkout
         uses: actions/checkout@v2
