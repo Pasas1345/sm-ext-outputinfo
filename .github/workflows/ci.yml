@@ -51,7 +51,7 @@ jobs:
           path: ambuild
 
       - name: Install AMBuild
-        run: python ./ambuild/setup.py
+        run: python ./ambuild/setup.py install
 
       - name: Checkout sm-ext-common
         uses: actions/checkout@v2
