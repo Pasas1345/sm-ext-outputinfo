@@ -17,7 +17,7 @@ jobs:
             sdks: css,csgo
           - os: windows-2019
             target-archs: x86,x86_64
-            sdks: css,csgo
+            sdks: css
 
     steps:
       - name: Install Linux packages
@@ -56,14 +56,14 @@ jobs:
           repository: srcdslab/sm-ext-common
           path: sourcemod/extensions/sm-ext-common
 
-      - name: Install sourcemod dependencies
-        run: |
-          bash sourcemod/tools/checkout-deps.sh -m -s ${{ matrix.sdks }}
-
       - name: Install AMBuild
         uses: BSFishy/pip-action@v1
         with:
           packages: ./ambuild
+
+      - name: Install sourcemod dependencies
+        run: |
+          bash sourcemod/tools/checkout-deps.sh -m -s ${{ matrix.sdks }}
 
       - name: Build
         working-directory: extension
