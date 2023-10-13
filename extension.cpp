@@ -632,7 +632,6 @@ const sp_nativeinfo_t MyNatives[] =
 	{ NULL, NULL },
 };
 
-/*
 bool Outputinfo::SDK_OnLoad(char *error, size_t maxlen, bool late)
 {
 	char conf_error[255] = "";
@@ -676,8 +675,8 @@ bool Outputinfo::SDK_OnLoad(char *error, size_t maxlen, bool late)
 
 	return true;
 }
-*/
 
+/*
 bool Outputinfo::SDK_OnLoad(char *error, size_t maxlength, bool late)
 {
 	IGameConfig *pGameConf;
@@ -698,6 +697,7 @@ bool Outputinfo::SDK_OnLoad(char *error, size_t maxlength, bool late)
 
 	return true;
 }
+*/
 
 void Outputinfo::SDK_OnUnload()
 {
