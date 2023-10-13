@@ -31,6 +31,9 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Setup Wheel
+        run: pip install wheel
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -50,8 +53,16 @@ jobs:
           repository: alliedmodders/ambuild
           path: ambuild
 
-      - name: Install AMBuild
-        run: python ./ambuild/setup.py install
+      - name: Install AMBuild (Linux)
+        if: runner.os == 'Linux'
+        uses: BSFishy/pip-action@v1
+        with:
+          packages: ./ambuild
+
+      - name: Install AMBuild (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          python ./ambuild/setup.py install
 
       - name: Checkout sm-ext-common
         uses: actions/checkout@v2
