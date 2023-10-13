@@ -14,10 +14,10 @@ jobs:
         include:
           - os: ubuntu-20.04
             target-archs: x86,x86_64
-            sdks: css,csgo
+            sdks: css
           - os: windows-2019
             target-archs: x86,x86_64
-            sdks: css,csgo
+            sdks: css
 
     steps:
       - name: Install Linux packages
