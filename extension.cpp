@@ -632,6 +632,7 @@ const sp_nativeinfo_t MyNatives[] =
 	{ NULL, NULL },
 };
 
+/*
 bool Outputinfo::SDK_OnLoad(char *error, size_t maxlen, bool late)
 {
 	char conf_error[255] = "";
@@ -672,6 +673,28 @@ bool Outputinfo::SDK_OnLoad(char *error, size_t maxlen, bool late)
 		return false;
 	}
 #endif
+
+	return true;
+}
+*/
+
+bool Outputinfo::SDK_OnLoad(char *error, size_t maxlength, bool late)
+{
+	IGameConfig *pGameConf;
+
+	if(!gameconfs->LoadGameConfigFile("outputinfo.games", &pGameConf, error, maxlength))
+	{
+		return false;
+	}
+
+	pGameConf->GetAddress("g_EntityListPool", reinterpret_cast<void**>(&g_pEntityListPool));
+	if(g_pEntityListPool == nullptr)
+	{
+		snprintf(error, maxlength, "Failed to obtain g_pEntityListPool from gamedata");
+		gameconfs->CloseGameConfigFile(pGameConf);
+		return false;
+	}
+	gameconfs->CloseGameConfigFile(pGameConf);
 
 	return true;
 }
